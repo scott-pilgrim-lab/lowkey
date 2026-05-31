@@ -60,7 +60,7 @@ export default function Home({ currentTrack, isPlaying, onPlay, onPause }) {
   const chillTracks = tracksData.filter((p) => p.mood === 'chill');
   const energeticTracks = tracksData.filter((p) => p.mood === 'energetic');
   const ambientTracks = tracksData.filter((p) => p.mood === 'ambient');
-  const melancholicTracks = tracksData.filter((p) => p.mood === 'sad');
+  const melancholicTracks = tracksData.filter((p) => p.mood === 'melancholic');
 
   const heroImage = '/hero-snoop.jpg';
 
