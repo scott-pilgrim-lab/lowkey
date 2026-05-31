@@ -1,0 +1,252 @@
+﻿@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700;800&display=swap");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply min-h-screen bg-lowkey-dark text-lowkey-text antialiased;
+  font-family: 'Inter', system-ui, sans-serif;
+  background-image: radial-gradient(circle at top left, rgba(255, 146, 36, 0.12), transparent 24%), radial-gradient(circle at bottom right, rgba(255, 190, 96, 0.08), transparent 20%), linear-gradient(180deg, #090806 0%, #111111 100%);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+::selection {
+  background: rgba(213, 162, 88, 0.24);
+  color: #ffffff;
+}
+
+.container-safe {
+  @apply max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8;
+}
+
+.glass-panel {
+  @apply rounded-[2rem] border border-[#4a3a26] bg-[#0f0d0a]/90 backdrop-blur-xl shadow-[0_30px_90px_-50px_rgba(0,0,0,0.28)];
+}
+
+.btn-primary {
+  @apply inline-flex items-center justify-center rounded-full bg-[#b18f51] px-6 py-3 text-sm font-semibold text-black shadow-[0_20px_60px_-35px_rgba(177,143,81,0.95)] transition duration-300 hover:bg-[#ceb76e] hover:shadow-[0_25px_70px_-40px_rgba(207,183,110,0.95)];
+}
+
+.btn-secondary {
+  @apply inline-flex items-center justify-center rounded-full border border-[#4a3a26] bg-[#120f0d]/95 px-6 py-3 text-sm font-medium text-[#c7b79a] transition duration-300 hover:border-[#d4b57c] hover:text-white hover:bg-[#1d150d]/95;
+}
+
+.nav-link {
+  position: relative;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -5px;
+  width: 0;
+  height: 2px;
+  background: #d4b57c;
+  transition: width 0.25s ease;
+  opacity: 0.85;
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+.film-grain {
+  position: relative;
+}
+
+.film-grain::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: radial-gradient(rgba(255,255,255,0.03) 1px, transparent 1px), radial-gradient(rgba(255,255,255,0.02) 1px, transparent 1px);
+  background-size: 8px 8px, 12px 12px;
+  opacity: 0.18;
+  mix-blend-mode: screen;
+}
+
+.vignette::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(circle, transparent 40%, rgba(0,0,0,0.75) 100%);
+}
+
+.hero-glow {
+  position: relative;
+}
+
+.hero-glow::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 20% 30%, rgba(255, 176, 75, 0.16), transparent 24%);
+  pointer-events: none;
+}
+
+.text-gold {
+  color: #d4b57c;
+}
+
+.font-serif {
+  font-family: 'Playfair Display', Georgia, serif;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes subtle-float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.7s ease-out forwards;
+}
+
+.animate-fade-in-up-delay-1 {
+  animation: fadeInUp 0.7s ease-out 0.2s forwards;
+  opacity: 0;
+}
+
+.animate-fade-in-up-delay-2 {
+  animation: fadeInUp 0.7s ease-out 0.4s forwards;
+  opacity: 0;
+}
+
+.animate-fade-in-scale {
+  animation: fadeInScale 0.8s ease-out forwards;
+}
+
+.animate-subtle-float {
+  animation: subtle-float 4s ease-in-out infinite;
+}
+
+/* Film grain effect */
+.film-grain-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' seed='2' /%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23noiseFilter)' opacity='0.04'/%3E%3C/svg%3E");
+  opacity: 0.3;
+  mix-blend-mode: overlay;
+}
+
+/* Spotlight effect behind artist */
+.spotlight-effect {
+  position: absolute;
+  pointer-events: none;
+}
+
+.spotlight-1 {
+  bottom: 20%;
+  right: 15%;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(255, 200, 87, 0.08) 0%, transparent 70%);
+  filter: blur(60px);
+}
+
+.spotlight-2 {
+  bottom: -10%;
+  right: 5%;
+  width: 800px;
+  height: 800px;
+  background: radial-gradient(circle, rgba(139, 69, 19, 0.06) 0%, transparent 70%);
+  filter: blur(80px);
+}
+
+.spotlight-3 {
+  top: 10%;
+  right: 20%;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(147, 112, 219, 0.05) 0%, transparent 70%);
+  filter: blur(50px);
+}
+
+/* Image mask with fade to black */
+.image-mask {
+  mask-image: linear-gradient(to left, black 0%, black 50%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to left, black 0%, black 50%, transparent 100%);
+}
+
+/* Rim lighting effect */
+.rim-light-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(135deg, rgba(184, 134, 11, 0.15) 0%, transparent 40%, transparent 60%, rgba(101, 67, 33, 0.2) 100%);
+}
+
+/* Light leak effect */
+.light-leak {
+  position: absolute;
+  opacity: 0.05;
+}
+
+.light-leak-1 {
+  top: -10%;
+  right: 10%;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(255, 215, 0, 0.6) 0%, transparent 70%);
+  filter: blur(80px);
+}
+
+.light-leak-2 {
+  bottom: 5%;
+  left: 0;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(75, 0, 130, 0.4) 0%, transparent 70%);
+  filter: blur(60px);
+}
+
+/* Workaround: hide external playback-speed overlays injected by browser extensions */
+/* This is brittle — it's better to disable the extension, but this helps quickly */
+[id*="speed"], [class*="speed"], [id*="video-speed"], [class*="video-speed"],
+[id*="vsc"], [class*="vsc"], .video-speed-controller, #video-speed-controller,
+.vsc-controller, .vsc_controls, [aria-label*="speed"], [aria-label*="playback"],
+[title*="speed"], [title*="playback"] {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
